@@ -3,46 +3,47 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>JavaScript and DOM API</title>
-    <link rel="stylesheet" type="text/css" href="game.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="game.css" media="all" /> <!-- linking the css file-->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="game.js"></script>
-    <noscript>
+    <script src="game.js"></script>  <!-- linking the javascript file-->
+    <noscript> <!-- incase the javascript file doesn't work , a message is displayed acc to the error-->
       Warning - Javascript is Disabled. For full functionality of the page, it
       is necessary to enable Javascript.
     </noscript>
     <script>
-        var Bear;
+        var Bear; //creating a global variable Bear to instantiate the Bear object in the Javascript file
+        var dBear;
     </script>
   </head>
-  <body onload="start();">
-    <div id="title">
+  <body onload="start();">  <!--invokes the start() once the page finishes loading -->
+    <div id="title"> <!-- displays the starting lines of the page-->
       <h1>Help the bear escape the bees !</h1>
       <p>
-        Bear tries to avoid being stung by
+        Bear tries to avoid being stung by         <!-- inputs the number of bees-->
         <input type="text" id="nbBees" value="1" size="3" /> bees by running and
         jumping. The objective is to have as less stings as possible!
       </p>
       <p>
-        You can ajust bees' speed
+        You can adjust bees' speed                 <!-- inputs the speed of the bees, up to the user-->
         <input type="text" id="speedBees" value="50" size="3" /> px/ms <br />
-        and the refresh period
+        and the refresh period                     <!-- and inouts the time period when the game refreshes.-->
         <input type="text" id="periodTimer" value="10" size="3" /> ms
       </p>
       <h2>Press left, right, up, down keys to move the bear</h2>
     </div>
-    <div id="scores">
+    <div id="scores">   <!-- displays the current score and the best duration-->
       <table>
         <tr>
           <td>
-            <p>Stings: [<span id="hits">0</span>]</p>
+            <p>Stings: [<span id="hits">0</span>]</p>      <!-- intially the Stings are zero-->
           </td>
           <td>
-            <p>Best duration: [<span id="duration">?</span>]</p>
+            <p>Best duration: [<span id="duration">?</span>]</p>   <!-- intially the best duration is 0-->
           </td>
         </tr>
       </table>
     </div>
-    <div id="board">
+    <div id="board">  <!-- the div element which consists of the game board and the bear and bee which is linked.-->
       <img src="./images/bear.gif" id="bear" alt="bear" />
     </div>
   </body>
