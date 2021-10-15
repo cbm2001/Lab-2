@@ -12,14 +12,16 @@
     </noscript>
     <script>
         var Bear; //creating a global variable Bear to instantiate the Bear object in the Javascript file
-        var dBear;
+        var bees;
+        var period;
+        var lastStingTime;
     </script>
   </head>
   <body onload="start();">  <!--invokes the start() once the page finishes loading -->
     <div id="title"> <!-- displays the starting lines of the page-->
       <h1>Help the bear escape the bees !</h1>
       <p>
-        Bear tries to avoid being stung by         <!-- inputs the number of bees-->
+        Bear tries to avoid being stung by        <!-- inputs the number of bees-->
         <input type="text" id="nbBees" value="1" size="3" /> bees by running and
         jumping. The objective is to have as less stings as possible!
       </p>
@@ -45,6 +47,7 @@
     </div>
     <div id="board">  <!-- the div element which consists of the game board and the bear and bee which is linked.-->
       <img src="./images/bear.gif" id="bear" alt="bear" />
+      <img src = "images/bee.gif" id="bee" alt="bee" />
     </div>
   </body>
 </html>
