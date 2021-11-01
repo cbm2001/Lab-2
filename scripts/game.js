@@ -1,51 +1,36 @@
 var bear;
-var dBear;
 var bees;
 var Timer;
 var lastStingTime;
-var firstmove;
 
 function Bear(){
-    dBear = $('#speedbear').val(); // gets the speed of the bear.
-    //dBear = document.getElementById("speedbear").value; // step made in pixels by the bear
-    //this.htmlElement = document.getElementById("bear"); // getting the id of element bear
+    this.dBear = setSpeed(); // gets the speed of the bear.
     this.htmlElement = $('#bear');
     //this.id = this.htmlElement.id; // transferring that to element 'id'
-    this.x = this.htmlElement.offsetLeft;
+    this.id = this.htmlElement.attr('id');
     this.x = this.htmlElement.offset().left;
-    //this.y = this.htmlElement.offsetTop;
     this.y = this.htmlElement.offset().top;
 
     this.move = function(xDir,yDir){
         this.fitBounds(); // to keep the bear within the board.
-        this.x += dBear * xDir;
-        this.y += dBear * yDir;
+        this.x += this.dBear * xDir;
+        this.y += this.dBear * yDir;
         this.display();
     };
 
     this.display = function(){ //
-        //this.htmlElement.style.left = this.x +"px";
         this.htmlElement.css("left", this.x + "px"); // .css(property,value)
-        //this.htmlElement.style.top = this.y + "px";
         this.htmlElement.css("top", this.y + "px")
-        //this.htmlElement.style.display = "block";
         this.htmlElement.css("display","block");
     };
 
     this.fitBounds = function(){
-        // let parent= this.htmlElement.parentElement;
         let parent = this.htmlElement.parent();
-        // let iw = this.htmlElement.offsetWidth;
         let iw = this.htmlElement.outerWidth();
-        // let ih = this.htmlElement.offsetHeight;
         let ih = this.htmlElement.outerHeight();
-        // let l = parent.offsetLeft;
         let l = parent.offset().left;
-        // let t = parent.offsetTop;
         let t = parent.offset().top;
-        // let w = parent.offsetWidth;
         let w = parent.outerWidth();
-        // let h = parent.offsetHeight;
         let h = parent.outerHeight();
         if (this.x < 0) {
             this.x = 0;
@@ -62,14 +47,14 @@ function Bear(){
     }; 
 }
 
+function setSpeed(){
+    return $('#speedbear').val();
+}
+
 //to handle keyboard events 
 //to move the bear
 function moveBear(e){
     // codes of the four keys
-    if (firstmove){
-        lastStingTime = new Date();
-        firstmove = false;
-    }
     const KEYUP = 38;
     const KEYDOWN = 40;
     const KEYLEFT = 37;
@@ -95,7 +80,6 @@ class Bee{
         this.htmlElement = createBeeImg(beeNumber);
         // its the HTML ID
         this.id = this.htmlElement.attr('id');
-        //this.id = this.htmlElement.id;
         // the left position (x)
         this.x = this.htmlElement.offset().left;
         //this.x = this.htmlElement.offsetLeft;
@@ -114,11 +98,8 @@ class Bee{
             // adjust position of bee and display it
             this.fitBounds(); // add this to adjust to bounds
             this.htmlElement.css("left", this.x + "px");
-            //this.htmlElement.style.left = this.x + "px";
             this.htmlElement.css("top", this.y + "px");
-            //this.htmlElement.style.top = this.y + "px";
             this.htmlElement.css("display","block");
-            //this.htmlElement.style.display = "block";
         };
 
         this.fitBounds = function(){
@@ -148,29 +129,21 @@ class Bee{
 
 function createBeeImg(wNum){
     // get dimension and position of board div
-    //let boardDiv = document.getElementById("board");
     let boardDiv = $('#board');
-    //let boardDivH = boardDiv.offsetHeight;
     let boardDivH = boardDiv.outerHeight();
-    //let boardDivW = boardDiv.offsetWidth;
     let boardDivW = boardDiv.outerWidth();
-    //let boardDivX = boardDiv.offsetLeft;
     let boardDivX = boardDiv.offset().left;
-    //let boardDivY = boardDiv.offsetTop;
     let boardDivY = boardDiv.offset().top;
     
     
     // create IMG element
     boardDiv.prepend('<img id="bee" alt = " A bee!" src="images/bee.gif" width="100" class="bee" />');
     let img = $('#bee');
-    //img.style.position = "absolute";
     img.css("position","absolute");
     //set initial position
     let x = getRandomInt(boardDivW);
     let y = getRandomInt(boardDivH);
-    //img.style.left = (boardDivX + x) + "px";
     img.css("left",boardDivX + x + "px");
-    //img.style.top = (y) + "px";
     img.css("top",y + "px");
     // return the img object
     return img;
@@ -203,7 +176,6 @@ function makeBees(){
 
 function moveBees(){
     // get speed input field value
-    //let speed = document.getElementById("speedBees").value;
     let speed = $('#speedBees').val();
     //move each bee to a random location
     for (let i = 0; i < bees.length; i++){
@@ -218,13 +190,9 @@ function updateBees(){ // update loop for game
     // move the bees randomly
     moveBees();
     // use a fixed update period
-    //let period = document.getElementById("periodTimer");
     let period = $('#periodTimer').val();
     // update the timer for the next move
-    //updateTimer = setTimeout('updateBees()',period);
     function updateTimer() {
-        //var indicator;
-        //var score = document.getElementById("hits").innerHTML;
         var score = $('#hits').html();
         if (score >= 1000) {
           clearTimeout(Timer);
@@ -239,11 +207,9 @@ function updateBees(){ // update loop for game
 function isHit(defender, offender) {
     if (overlap(defender, offender)) {
         //check if the two image overlap
-        //let score = hits.innerHTML;
         let score = $('#hits').html();
         score = Number(score) + 1; //increment the score
-        //hits.innerHTML = score; //display the new score
-        $("#hits").html(score); // $("#hits").html(score)
+        $("#hits").html(score); // 
         //calculate longest duration
         let newStingTime = new Date();
         let thisDuration = newStingTime - lastStingTime;
@@ -254,7 +220,6 @@ function isHit(defender, offender) {
         } else {
             if (longestDuration < thisDuration) {
                 longestDuration = thisDuration;
-                firstmove = true;
             }
         }
         $('#duration').html(longestDuration); 
@@ -286,25 +251,22 @@ function overlap(element1, element2) {
 
 
 function start(){
-    //document.getElementById("hits").innerHTML=0;
-    //clearTimeout(indicator);
     // create bear
     bear = new Bear();
     // add an event listener to the keypress event
     $(document).keydown(function (event){
         moveBear(event)
     });
-    //lastStingTime = new Date();
+    lastStingTime = new Date();
     // to change the speed of the ship
     $('#speedbear').change(function() {
-        dBear = $('#speedbear').val();
+        setSpeed();
     });
     // create new array for bees
     bees = new Array();
     // create bees
     makeBees();
     // move the bees continuously
-    //updateBees();
 }
 
 function restart(){
@@ -321,6 +283,5 @@ function restart(){
 }
 
 $(document).ready(function() {
-    //$('#title').fadeOut();
     start();
 });
