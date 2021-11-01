@@ -1,5 +1,5 @@
-var bear;
-var bees;
+var bear; //creating a global variable Bear to instantiate the Bear object in the Javascript file
+var bees; // creating a global variable bee to add the number of bees specified by the user.
 var Timer;
 var lastStingTime;
 
