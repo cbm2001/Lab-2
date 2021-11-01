@@ -174,7 +174,7 @@ function makeBees(){
 function addBee(){
     let nbBees = $('#nbBees').val();
     nbBees = Number(nbBees)+1;
-    var bee = new Bee(bees.length +1);
+    var bee = new Bee(1);
     bee.display(); // display the bee
     bees.push(bee); // add the bee object to the bees array
     $("#nbBees").html(nbBees);
@@ -264,7 +264,7 @@ function start(){
         moveBear(event)
     });
     lastStingTime = new Date();
-    // to change the speed of the ship
+    // to change the speed of the bee
     $('#speedbear').change(function() {
         setSpeed();
     });
