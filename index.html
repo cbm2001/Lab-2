@@ -40,9 +40,12 @@
         the bees' speed :                <!-- inputs the speed of the bees, up to the user -->
         <input type="text" id="speedBees" value="50" size="3" /> px/ms </br>
         and the refresh period :                    <!-- and inputs the time period when the game refreshes.-->
-        <input type="text" id="periodTimer" value="10" size="3" /> ms <br/> </p>
+        <input type="text" id="periodTimer" value="10" size="3" /> ms <br/> 
+        You can also add a bee to make it more challenging by clicking this button 
+        </button><button type="button" id="new" onclick="addBee()">Add New bee</button>
+      </p>
         To start/ restart the game, please click the button below </br>
-        <button type = "button" id="start" onclick="restart()">Start Game</button>
+        <button type = "button" id="restart" onclick="restart()">Start Game</button>
     </div>
     <div id="scores">   <!-- displays the current score and the best duration-->
       <h2> Score board</h2>

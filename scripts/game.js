@@ -6,8 +6,7 @@ var lastStingTime;
 function Bear(){
     this.dBear = setSpeed(); // gets the speed of the bear.
     this.htmlElement = $('#bear');
-    //this.id = this.htmlElement.id; // transferring that to element 'id'
-    this.id = this.htmlElement.attr('id');
+    this.id = this.htmlElement.attr('id'); // transferring that to element 'id'
     this.x = this.htmlElement.offset().left;
     this.y = this.htmlElement.offset().top;
 
@@ -47,9 +46,6 @@ function Bear(){
     }; 
 }
 
-function setSpeed(){
-    return $('#speedbear').val();
-}
 
 //to handle keyboard events 
 //to move the bear
@@ -74,6 +70,10 @@ function moveBear(e){
     }
 }
 
+function setSpeed(){
+    return $('#speedbear').val();
+}
+
 class Bee{
     constructor(beeNumber){
         // the HTML element corresponding to the IMG of the bee
@@ -82,10 +82,8 @@ class Bee{
         this.id = this.htmlElement.attr('id');
         // the left position (x)
         this.x = this.htmlElement.offset().left;
-        //this.x = this.htmlElement.offsetLeft;
         // the top position (y)
         this.y = this.htmlElement.offset().top;
-        //this.y = this.htmlElement.offsetTop;
 
         this.move = function(dx,dy){
             // move the bees by dx,dy
@@ -155,7 +153,6 @@ function getRandomInt(max){
 
 function makeBees(){
     // get number of bees specified by the user
-    //let nbBees = document.getElementById('nbBees').value;
     let nbBees = $('#nbBees').val();
     nbBees = Number(nbBees); // converting the content of the input to a number;
     if (isNaN(nbBees)){ //checking if the input field contains a valid number.
@@ -172,6 +169,15 @@ function makeBees(){
         bees.push(bee); // add the bee object to the bees array
         i++;
     }
+}
+
+function addBee(){
+    let nbBees = $('#nbBees').val();
+    nbBees = Number(nbBees)+1;
+    var bee = new Bee(bees.length +1);
+    bee.display(); // display the bee
+    bees.push(bee); // add the bee object to the bees array
+    $("#nbBees").html(nbBees);
 }
 
 function moveBees(){
