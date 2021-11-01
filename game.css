@@ -1,11 +1,14 @@
 body {
-  background-color:lightskyblue;
+  background-color:skyblue;
 }
 #heading{
   align-content: center;
   align-self: center;
-  font: bold;
+  font-family: serif;
+  font: italic;
   text-align: center;
+  text-decoration: underline;
+
 }
 #bear {
   position: absolute;
@@ -18,32 +21,39 @@ body {
 #board {
   position: absolute;
   height: 600px;
-  width: 1000px;
+  width: 1500px;
   align-content: center;
   align-self: center;
+  background-color:seagreen;
 }
 
 #title {
-  background-color:lightseagreen;
   align-content: center;
   align-self: center;
   font: bold;
+  font-family:cursive;
+  font-size: larger;
 }
 
 #scores {
-  background-color: white;
+  background-color:darkgoldenrod;
   align-content: center;
   align-self: center;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: larger;
 }
 
 .location {
   color: green;
 }
 
-#hits {
-  color: red;
+#start{
+  background-color:chocolate;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: large;
 }
-
-#duration {
-  color: blue;
+h2{
+  font-family:serif;
+  font-size: larger;
+  text-decoration: underline;
 }

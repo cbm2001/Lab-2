@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>JavaScript and DOM API</title>
+    <title>Web Game</title>
     <link rel="stylesheet" type="text/css" href="game.css" media="all" /> <!-- linking the css file-->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -20,38 +20,34 @@
   </head>
   <body> <!--invokes the start() once the page finishes loading -->
     <div id="heading">
-      <h1> GAME</h1>
+      <h1> The Bear Sting Game</h1>
     </div>
     <div id="title"> <!-- displays the starting lines of the page-->
-      <h2>Help the bear escape the bees !</h2>
+      <h2> Objective : To help the bear escape the bees !</h2>
       <p>
-        Details:
-        Bear tries to avoid being stung by        <!-- inputs the number of bees-->
-        <input type="text" id="nbBees" value="1" size="3" /> bees by running and
-        jumping. The objective is to have as less stings as possible!
+        Bear tries to avoid being stung by bees by running and jumping. 
+        The goal is to have as less stings as possible!
+        The game gets over once the number of stings reaches 500. Make it more challenging by increasing the number and speed of the bees.</br>
+        Good Luck!
       </p>
+      <h2>Instructions</h2> <p>Press left, right, up, down keys to move the bear</p>
       <p>
-        You can adjust the bear's speed   <!--bear's speed-->
-        <input type = "number" id="speedbear" value ="100" size = 3> px/ms <br/> <!--onchange="setSpeed()"/> -->
-        and bees' speed                 <!-- inputs the speed of the bees, up to the user -->
-        <input type="text" id="speedBees" value="50" size="3" /> px/ms <br />
-        and the refresh period                     <!-- and inputs the time period when the game refreshes.-->
+        You can adjust: </br>
+        the bear's speed :  <!--bear's speed-->
+        <input type = "number" id="speedbear" value ="100" size = 3> px/ms</br> 
+        the number of bees 
+        <input type="text" id="nbBees" value="1" size="3" /></br>
+        the bees' speed :                <!-- inputs the speed of the bees, up to the user -->
+        <input type="text" id="speedBees" value="50" size="3" /> px/ms </br>
+        and the refresh period :                    <!-- and inputs the time period when the game refreshes.-->
         <input type="text" id="periodTimer" value="10" size="3" /> ms <br/> </p>
-        To start the game, please click the button below </br>
+        To start/ restart the game, please click the button below </br>
         <button type = "button" id="start" onclick="restart()">Start Game</button>
-      <h2>Press left, right, up, down keys to move the bear</h2>
     </div>
     <div id="scores">   <!-- displays the current score and the best duration-->
-      <table>
-        <tr>
-          <td>
-            <p>Stings: [<span id="hits">0</span>]</p>      <!-- intially the Stings are zero-->
-          </td>
-          <td>
-            <p>Best duration: [<span id="duration">0</span>]</p>   <!-- intially the best duration is 0-->
-          </td>
-        </tr>
-      </table>
+      <h2> Score board</h2>
+            <p>Number of Stings: <span id="hits">0</span>     <!-- intially the Stings are zero--></p>
+            <p>Best duration: <span id="duration">0</span></p>   <!-- intially the best duration is 0-->
     </div>
     <div id="board">  <!-- the div element which consists of the game board and the bear and bee which is linked.-->
       <img src="./images/bear.gif" id="bear" alt="bear" />

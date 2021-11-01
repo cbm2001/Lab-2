@@ -3,6 +3,7 @@ var dBear;
 var bees;
 var Timer;
 var lastStingTime;
+var firstmove;
 
 function Bear(){
     dBear = $('#speedbear').val(); // gets the speed of the bear.
@@ -65,6 +66,10 @@ function Bear(){
 //to move the bear
 function moveBear(e){
     // codes of the four keys
+    if (firstmove){
+        lastStingTime = new Date();
+        firstmove = false;
+    }
     const KEYUP = 38;
     const KEYDOWN = 40;
     const KEYLEFT = 37;
@@ -247,10 +252,12 @@ function isHit(defender, offender) {
         if (longestDuration === 0) {
             longestDuration = thisDuration;
         } else {
-            if (longestDuration < thisDuration) longestDuration = thisDuration;
+            if (longestDuration < thisDuration) {
+                longestDuration = thisDuration;
+                firstmove = true;
+            }
         }
         $('#duration').html(longestDuration); 
-        //document.getElementById("duration").innerHTML = longestDuration;
     }
 }
   
@@ -277,11 +284,6 @@ function overlap(element1, element2) {
     return true;
 }
 
-/*function addBees(){
-    let nbBees = document.getElementById("nbBees").value;
-    nbBees = Number(nbBees) + 1;
-    makeBees();
-}*/
 
 function start(){
     //document.getElementById("hits").innerHTML=0;
@@ -292,7 +294,7 @@ function start(){
     $(document).keydown(function (event){
         moveBear(event)
     });
-    lastStingTime = new Date();
+    //lastStingTime = new Date();
     // to change the speed of the ship
     $('#speedbear').change(function() {
         dBear = $('#speedbear').val();
@@ -311,7 +313,6 @@ function restart(){
         $('#bee').remove();
         j++;
     }
-    //$('#title').fadeOut();
     bees=[]
     $('#hits').html(0);
     $('#duration').html(0);
@@ -320,5 +321,6 @@ function restart(){
 }
 
 $(document).ready(function() {
+    //$('#title').fadeOut();
     start();
 });
