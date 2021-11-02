@@ -174,7 +174,7 @@ function makeBees(){
 function addBee(){
     let nbBees = $('#nbBees').val();
     nbBees = Number(nbBees)+1;
-    var bee = new Bee(1);
+    var bee = new Bee(bees.length + 1);
     bee.display(); // display the bee
     bees.push(bee); // add the bee object to the bees array
     $("#nbBees").html(nbBees);
